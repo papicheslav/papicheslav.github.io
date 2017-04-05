@@ -67,8 +67,13 @@ for(var i=0; i<tagList.length; i++){
     var s5=  'о';
     var pukichi = ["иславский", "славич", "иславич", 'славический', 'иславический', 'славкич', 'иславкич', 'ич', 'слав', 'ислав', 'швили', 'ишвили'];
 
-  var n = Math.floor(Math.random() * (100));
-  if (n < 33) continue;
+    var n = Math.floor(Math.random() * (100));
+    if (n < 33)
+
+    {
+        answer += tagList[i] + ' ';
+        continue;
+      }
 
     var n = Math.floor(Math.random() * (pukichi.length)) + 0;
 
