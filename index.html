@@ -54,7 +54,7 @@ var re = /\s*[, ]\s*/;
 var tagList = text.split(re);
 var answer = ' ';
 for(var i=0; i<tagList.length; i++){
-    var sv = 'да|к|не|и|ты|мы|я|они';
+    var sv = 'да|к|не|и|ты|мы|я|они|в';
       if(sv.indexOf(tagList[i]) != -1) {
         continue;
       }
