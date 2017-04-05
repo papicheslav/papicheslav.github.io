@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ru" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Генератор текстыча 0.1</title>
+<link href="http://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+<script src="http://yandex.st/jquery/1.8.0/jquery.min.js"></script>
+<script src="http://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="http://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+
+<style>
+body, html {
+            padding:0;
+            margin: 0;
+            width: 100%;
+            height: 100%;
+}
+
+.btn-additional {
+  color: #FF00FF;
+}
+
+body {
+  padding-top: 50px;
+}
+
+.navbar-brand{
+  height: 100%;
+
+}
+.custom-search-form{
+    margin-top:5px;
+}
+
+</style>
+
+<script type="text/javascript">
+var myMap;
+
+ymaps.ready(init);
+
+function init () {
+
+	var myCollection = new ymaps.GeoObjectCollection();
+
+
+
+
+
+	$("#searchmap").click(function () {
+
+	var text = $('input[name="search_address"]').val();
+var re = /\s*[, ]\s*/;
+var tagList = text.split(re);
+var answer = ' ';
+for(var i=0; i<tagList.length; i++){
+
+    var lastq = tagList[i].substr(-1);
+    var s = 'цкнгшщзхфвпрлджчсмтб';
+
+    var s3=  'иы';
+    var pukichi = ["иславский", "славич", "иславич", 'славический', 'иславический', 'славкич', 'иславкич', 'ич', 'слав', 'ислав', 'швили', 'ишвили'];
+
+    var n = Math.floor(Math.random() * (pukichi.length)) + 0;
+
+    if(s.indexOf(lastq) != -1) {
+    answer += tagList[i] + pukichi[n] + ' ' ;
+}
+
+else if (s3.indexOf(lastq) != -1) {
+  var pukichi3 = ["ычи", "ыславичи", "иславичи", 'иславы', 'иславские', 'ишвили'];
+
+  var n3 = Math.floor(Math.random() * (pukichi3.length)) + 0;
+  answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi3[n3] + ' ' ;
+}
+else {
+
+    answer += tagList[i] + ' ';
+}
+
+
+
+
+
+}
+
+
+
+$("#add_img").html('<ul><li style="display: inline-block; padding: 25px">' + answer + '</li></ul>');
+});
+
+
+
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Введи текстыч</a>
+        </div>
+        <div class="collapse navbar-collapse">
+        	<div class="col-lg-3">
+          <div class="input-group custom-search-form">
+              <input type="text" class="form-control" name="search_address">
+              <span class="input-group-btn">
+              <button id="searchmap" class="btn btn-default" type="button">
+              <span class="glyphicon glyphicon-search"></span>
+             </button>
+             </span>
+             </div><!-- /input-group -->
+        </div>
+        </div>
+        </div><!--/.nav-collapse -->
+      </div>
+
+
+    </div>
+
+    <div class="container">
+
+      <div class="row">
+        <div class="col-xs-6">
+        	<div id="map" style="width: 100%; height: 800px;"></div>
+        </div>
+        <div class="col-xs-6">
+        <div id="add_img" class="row">
+        </div>
+
+        </div>
+      </div>
+
+    </div><!-- /.container -->
+
+
+
+</body>
+</html>
