@@ -54,14 +54,14 @@
       var tagList = text.split(re);
       var answer = ' ';
       for(var i=0; i<tagList.length; i++){
-        var sv = 'сам|же|что|не|так|нам|да|к|не|и|ты|мы|я|они|в|об|а|же|во|из|меня|эти|этот|эту|это';
+        var sv = 'бы|или|и|сам|же|что|не|так|нам|да|к|не|и|ты|мы|я|они|в|об|а|же|во|из|меня|эти|этот|эту|это';
         if(sv.indexOf(tagList[i]) != -1) {
           answer += tagList[i] + ' ';
           continue;
         }
 
         var lastq = tagList[i].substr(-1);
-        var s = 'цкнгшщзхфвпрлджчсмтб';
+        var s = 'цкнгшщзхфвпрлджчсмтбй';
 
         var s3=  'иы';
         var pukichi = ["иславский", "славич", "иславич", 'славический', 'иславический', 'славкич', 'иславкич', 'ич', 'слав', 'ислав', 'швили', 'ишвили'];
@@ -91,10 +91,10 @@
 
       if  (tagList[i].endsWith('ой') || tagList[i].endsWith('ей') || tagList[i].endsWith('ёй') ||tagList[i].endsWith('ии') || tagList[i].endsWith('еи') ) {
 
-        var pukichi4 = ["ычи", "ыславской", "иславичи", 'иславой', 'иславской', 'ишвили'];
+        var pukichi4 = ["ыславской", "иславичи", 'иславой', 'иславской', 'ишвили'];
         var n4 = Math.floor(Math.random() * (pukichi4.length)) + 0;
 
-        answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi4[n4] + ' ' ;
+        answer += tagList[i].substr(0,tagList[i].length - 2) + pukichi4[n4] + ' ' ;
 
 
       }
