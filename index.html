@@ -2,7 +2,7 @@
 <html lang="ru" >
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Генератор текстыча 0.1</title>
+<title>Генератор текстыча 0.2</title>
 <link href="https://yandex.st/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://yandex.st/jquery/1.8.0/jquery.min.js"></script>
 <script src="https://yandex.st/bootstrap/3.1.1/js/bootstrap.min.js"></script>
@@ -54,8 +54,9 @@ var re = /\s*[, ]\s*/;
 var tagList = text.split(re);
 var answer = ' ';
 for(var i=0; i<tagList.length; i++){
-    var sv = 'да|к|не|и|ты|мы|я|они|в';
+    var sv = 'так|нам|да|к|не|и|ты|мы|я|они|в|об|а|же|во|из|меня|эти|этот|эту|это';
       if(sv.indexOf(tagList[i]) != -1) {
+        answer += tagList[i] + ' ';
         continue;
       }
 
@@ -63,8 +64,6 @@ for(var i=0; i<tagList.length; i++){
     var s = 'цкнгшщзхфвпрлджчсмтб';
     var s2 = 'ая';
     var s3=  'иы';
-    var s4=  'е';
-    var s5=  'о';
     var pukichi = ["иславский", "славич", "иславич", 'славический', 'иславический', 'славкич', 'иславкич', 'ич', 'слав', 'ислав', 'швили', 'ишвили'];
 
     var n = Math.floor(Math.random() * (100));
@@ -75,8 +74,50 @@ for(var i=0; i<tagList.length; i++){
         continue;
       }
 
-    var n = Math.floor(Math.random() * (pukichi.length)) + 0;
+      if (tagList[i].endsWith('их') ||
+tagList[i].endsWith('им') ||
+tagList[i].endsWith('ем')
+|| tagList[i].endsWith('ут')
 
+|| tagList[i].endsWith('ют')
+|| tagList[i].endsWith('ет')
+|| tagList[i].endsWith('ёт')
+    ){
+  answer += tagList[i] + ' ';
+      continue;
+    }
+
+    var n = Math.floor(Math.random() * (pukichi.length)) + 0;
+    if  (tagList[i].endsWith('ами') || tagList[i].endsWith('ями') || tagList[i].endsWith('ими')) {
+
+      var pukichi4 = ["ычами", "ыславскими", "иславичами", 'иславами', 'иславскими', 'ишвили'];
+        var n4 = Math.floor(Math.random() * (pukichi4.length)) + 0;
+
+          answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi4[n4] + ' ' ;
+
+
+      }
+    if  (tagList[i].endsWith('ам') || tagList[i].endsWith('ям')) {
+
+      var pukichi4 = ["ычам", "ыславским", "иславичам", 'иславам', 'иславским', 'ишвили'];
+        var n4 = Math.floor(Math.random() * (pukichi4.length)) + 0;
+
+          answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi4[n4] + ' ' ;
+
+
+      }
+      else
+  if  (tagList[i].endsWith('ии') || tagList[i].endsWith('ве')) {
+
+    var pukichi4 = ["ыче", "ыславском", "иславиче", 'иславе', 'иславском', 'ишвили'];
+      var n4 = Math.floor(Math.random() * (pukichi4.length)) + 0;
+
+        answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi4[n4] + ' ' ;
+
+
+    }
+
+else
     if(s.indexOf(lastq) != -1) {
     answer += tagList[i] + pukichi[n] + ' ' ;
 }
@@ -92,18 +133,7 @@ else if (s3.indexOf(lastq) != -1) {
   var n3 = Math.floor(Math.random() * (pukichi3.length)) + 0;
   answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi3[n3] + ' ' ;
 }
-else if (s4.indexOf(lastq) != -1) {
-  var pukichi4 = ["ычное", "ыславичное", "иславичное", 'иславское', 'иславское', 'ишвили'];
 
-  var n4 = Math.floor(Math.random() * (pukichi4.length)) + 0;
-  answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi4[n4] + ' ' ;
-}
-else if (s5.indexOf(lastq) != -1) {
-  var pukichi5 = ["ычного", "ыславичного", "иславичного", 'иславского', 'иславского', 'ишвили'];
-
-  var n5 = Math.floor(Math.random() * (pukichi5.length)) + 0;
-  answer += tagList[i].substr(0,tagList[i].length - 1) + pukichi5[n5] + ' ' ;
-}
 else {
 
     answer += tagList[i] + ' ';
